@@ -3,7 +3,7 @@ TinderStats for iOS is an application and [Cydia Substrate Tweak](http://iphoned
 
 TinderStats **REQUIRES** a jailbroken iOS device in order to work.
 
-![Screenshot of the application](https://github.com/pathtoscreenshothere)
+![Screenshot of the application](https://raw.githubusercontent.com/f41c0r/TinderStats-iOS/master/screenshot.png)
 
 ## Install
 
