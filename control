@@ -1,0 +1,10 @@
+Package: com.github.f41c0r.tinderstatsapp
+Name: TinderStats-iOS
+Version: 0.0.5
+Architecture: iphoneos-arm
+Depends: mobilesubstrate, applist
+Description: An app that displays statistics about your Tinder usage.
+Maintainer: f41c0r
+Author: f41c0r
+Section: Utilities
+Homepage: https://github.com/f41c0r/TinderStats-iOS
