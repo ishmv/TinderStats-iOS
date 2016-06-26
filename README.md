@@ -22,19 +22,21 @@ TinderStats **REQUIRES** a jailbroken iOS device in order to work. This is alpha
 #### More Difficult:
 
 1. See build instructions.
-2. After generating a deb file, push it to your device as in "Also Easy"
+2. After generating a deb file, push it to your device as described in the "Also Easy" Install section.
 
 ## Build Instructions
 
-//TODO
+1. [Install and set up Theos](http://iphonedevwiki.net/index.php/Theos/Getting_Started)
+2. Copy the files from the theos subdirectory of this project into the $THEOS directory.
+3. Issue `make package` at the root of this project.
+4. Assuming all goes well, you will have a .deb file in the "packages" directory. Push it to your device as described in the "Also Easy" Install section.
 
 ## Still TODO
 
-1. Build Instructions.
-2. Figure out which function to hook to do superlike counting.
-3. Figure out which function to hook to count how many matches you have gotten.
-4. Figure out how to identify whether a given match was a superlike match or just a normal match.
-5. Add a donations section and add a BTC address to donate to :wink:
+1. Figure out which function to hook to do superlike counting.
+2. Figure out which function to hook to count how many matches you have gotten.
+3. Figure out how to identify whether a given match was a superlike match or just a normal match.
+4. Add a donations section and add a BTC address to donate to :wink:
 
 ## License
 
