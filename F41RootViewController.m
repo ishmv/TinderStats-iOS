@@ -19,8 +19,8 @@
 	self.title = @"TinderStats";
     self.tableView.scrollEnabled = NO;
 
-    tableElements = [NSArray arrayWithObjects:@"Likes:", @"Superlikes:", @"Passes:", @"Matches:", @"Superlike Matches:", @"Match Rate:", @"Superlike Match Rate:", @"Rate of Pickiness", nil];
-    tableColors = [NSArray arrayWithObjects:[UIColor blueColor], [UIColor cyanColor], [UIColor redColor], [UIColor purpleColor ], [UIColor yellowColor ],[UIColor magentaColor ],  [UIColor greenColor ], [UIColor brownColor ], nil];
+    tableElements = [NSArray arrayWithObjects:@"Likes:", @"Superlikes:", @"Passes:", @"Matches:", @"Superlike Matches:", @"Match Rate:", @"Superlike Match Rate:", @"Rate of Pickiness", @"Superlike Pickiness", nil];
+    tableColors = [NSArray arrayWithObjects:[UIColor blueColor], [UIColor cyanColor], [UIColor redColor], [UIColor purpleColor ], [UIColor yellowColor ],[UIColor magentaColor ],  [UIColor greenColor ], [UIColor brownColor ], [UIColor brownColor ], nil];
     
     dbmanager = [[DBManager alloc] init];
     if(![dbmanager checkDBExists])
@@ -97,12 +97,18 @@
             NSString *superMatchRateString = [NSString stringWithFormat:@" %4.1f%%", superlikeMatchRateFloat];
             cell.textLabel.text = [[tableElements objectAtIndex:indexPath.row] stringByAppendingString: superMatchRateString];
         }
-        else // Rate of pickiness (e.g. percent people you like instead of reject)
+        else if(idx == 7)// Rate of pickiness (e.g. percent people you like instead of reject)
         {
             float pickinessFloat = 100 * ((float)(likes + superlikes) / ((float) totalSwipes));
             NSLog(@"f41c0r: %f",pickinessFloat);
             NSString *pickinessString = [NSString stringWithFormat:@" %4.1f%%", pickinessFloat];
             cell.textLabel.text = [[tableElements objectAtIndex:indexPath.row] stringByAppendingString: pickinessString];
+        }
+        else {
+            float slPickinessFloat = 100 * ((float) superlikes / ((float) totalSwipes));
+            NSLog(@"f41c0r: %f",slPickinessFloat);
+            NSString *slPickinessString = [NSString stringWithFormat:@" %4.2f%%", slPickinessFloat];
+            cell.textLabel.text = [[tableElements objectAtIndex:indexPath.row] stringByAppendingString: slPickinessString];
         }
     }
     cell.textLabel.textColor = [tableColors objectAtIndex:indexPath.row];
