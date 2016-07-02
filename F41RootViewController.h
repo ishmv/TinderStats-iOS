@@ -2,4 +2,7 @@
 
 @interface F41RootViewController : UITableViewController
 
+
+-(void) reloadTable;
+
 @end

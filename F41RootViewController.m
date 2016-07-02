@@ -6,28 +6,29 @@
     DBManager * dbmanager;
 }
 
+
+        
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
     return NO;
 }
 
-
 - (void)loadView {
 	[super loadView];
 
-
 	self.title = @"TinderStats";
     self.tableView.scrollEnabled = NO;
-
-    tableElements = [NSArray arrayWithObjects:@"Likes:", @"Superlikes:", @"Passes:", @"Matches:", @"Superlike Matches:", @"Match Rate:", @"Superlike Match Rate:", @"Rate of Pickiness", @"Superlike Pickiness", nil];
-    tableColors = [NSArray arrayWithObjects:[UIColor blueColor], [UIColor cyanColor], [UIColor redColor], [UIColor purpleColor ], [UIColor yellowColor ],[UIColor magentaColor ],  [UIColor greenColor ], [UIColor brownColor ], [UIColor brownColor ], nil];
     
+    tableElements = [NSArray arrayWithObjects:@"Likes:", @"Superlikes:", @"Passes:", @"Matches:", @"Superlike Matches:", @"Match Rate:", @"Superlike Match Rate:", @"Rate of Pickiness", @"Superlike Pickiness", nil];
+
+    tableColors = [NSArray arrayWithObjects:[UIColor blueColor], [UIColor cyanColor], [UIColor redColor], [UIColor purpleColor ], [UIColor yellowColor ],[UIColor magentaColor ],  [UIColor greenColor ], [UIColor brownColor ], [UIColor orangeColor ], nil];
+
     dbmanager = [[DBManager alloc] init];
-    if(![dbmanager checkDBExists])
-    {
+    if(![dbmanager checkDBExists]){
         [dbmanager createDB];
         [dbmanager initDB];
     }
+
 
 }
 
@@ -113,6 +114,22 @@
     }
     cell.textLabel.textColor = [tableColors objectAtIndex:indexPath.row];
     return cell;
+}
+
+- (void) reloadTable {
+    NSLog(@"f41c0r: reloading table");
+
+    tableElements = [NSArray arrayWithObjects:@"Likes:", @"Superlikes:", @"Passes:", @"Matches:", @"Superlike Matches:", @"Match Rate:", @"Superlike Match Rate:", @"Rate of Pickiness", @"Superlike Pickiness", nil];
+
+    tableColors = [NSArray arrayWithObjects:[UIColor blueColor], [UIColor cyanColor], [UIColor redColor], [UIColor purpleColor ], [UIColor yellowColor ],[UIColor magentaColor ],  [UIColor greenColor ], [UIColor brownColor ], [UIColor orangeColor ], nil];
+
+    dbmanager = [[DBManager alloc] init];
+    if(![dbmanager checkDBExists]){
+        [dbmanager createDB];
+        [dbmanager initDB];
+    }
+
+    [self.tableView reloadData];
 }
 
 @end
